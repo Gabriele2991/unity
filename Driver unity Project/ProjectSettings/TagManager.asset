@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Package
   - Customer
+  - Speed Up
+  - Bump
   layers:
   - Default
   - TransparentFX
