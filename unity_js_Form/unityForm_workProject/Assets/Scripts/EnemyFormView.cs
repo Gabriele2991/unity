@@ -1,0 +1,46 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class EnemyFormView : MonoBehaviour
+{
+    public InputField nameField;
+    public InputField healthField;
+    public InputField attackField;
+    public Button createButton;
+
+    public void InitFormView(System.Action<EnemyRequestData> callback)
+    {
+        createButton.onClick.AddListener(() =>
+        {
+            OnCreateClicked(callback);
+        });
+    }
+
+    public void OnCreateClicked(System.Action<EnemyRequestData> callback)
+    {
+        Debug.Log(InputsAreValid());
+        if (InputsAreValid())
+        {
+            var enemy = new EnemyRequestData(
+                nameField.text,
+                int.Parse(healthField.text),
+                int.Parse(attackField.text)
+                );
+
+            callback(enemy);
+        }
+        else
+        {
+            Debug.LogWarning("invalid Input");
+        }
+    }
+
+    private bool InputsAreValid()
+    {
+        return (string.IsNullOrEmpty(nameField.text) ||
+             string.IsNullOrEmpty(healthField.text) ||
+             string.IsNullOrEmpty(attackField.text));
+    }
+}
