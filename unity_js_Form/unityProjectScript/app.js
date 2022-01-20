@@ -1,7 +1,19 @@
-
 const express = require ("express");
 const id = require('shortid');
 const app = express();
+// const mongoose = require('mongoose');
+//const Enemy = require('./models/enemy');
+
+// mongoose.connect("mongodb://localhost:27017/enemy_database",{
+//     useNewUrlParser:true,
+//     useUnifiedTopology:true
+// });
+
+// const db = mongoose.connection;
+// db.on('error',console.error.bind(console,'connection error'));
+// db.once('open',()=>{
+//     console.log("Mongo connected");
+// })
 
 app.use(express.json());
 

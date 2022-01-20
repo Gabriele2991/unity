@@ -4,27 +4,27 @@ using UnityEngine.Networking;
 
 public class ClientApi : MonoBehaviour
 {
-    public string url;
-    public EnemyViewController enemyViewController;
+    //public string url;
+    //public EnemyViewController enemyViewController;
 
     public string getUrl = "localhost:3000/enemy";
     public string postUrl = "localhost:3000/enemy/create";
 
-    void Start()
-    {
-        var enemy = new Enemy()
-        {
-            id = 100,
-            name = "Balrog",
-            health = 1000,
-            attack = 2500
-        };
+    //void Start()
+    //{
+    //    var enemy = new Enemy()
+    //    {
+    //        id = 100,
+    //        name = "Balrog",
+    //        health = 1000,
+    //        attack = 2500
+    //    };
 
-        //StartCoroutine(Get(url));
-        //StartCoroutine(Post(url, enemy));
+    //    //StartCoroutine(Get(url));
+    //    //StartCoroutine(Post(url, enemy));
 
         
-    }
+    //}
 
     public void GetRequest(string url, System.Action<string> callback)
     {

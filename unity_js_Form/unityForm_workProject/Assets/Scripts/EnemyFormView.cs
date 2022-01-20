@@ -20,7 +20,6 @@ public class EnemyFormView : MonoBehaviour
 
     public void OnCreateClicked(System.Action<EnemyRequestData> callback)
     {
-        Debug.Log(InputsAreValid());
         if (InputsAreValid())
         {
             var enemy = new EnemyRequestData(
@@ -39,7 +38,7 @@ public class EnemyFormView : MonoBehaviour
 
     private bool InputsAreValid()
     {
-        return (string.IsNullOrEmpty(nameField.text) ||
+        return !(string.IsNullOrEmpty(nameField.text) ||
              string.IsNullOrEmpty(healthField.text) ||
              string.IsNullOrEmpty(attackField.text));
     }

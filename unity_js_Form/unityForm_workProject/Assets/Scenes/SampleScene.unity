@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasParent: {fileID: 2091720883}
   client: {fileID: 132409408}
+  enemyDatabase: {fileID: 11400000, guid: 7606323fbbad85343ae1804073864807, type: 2}
 --- !u!4 &69684281
 Transform:
   m_ObjectHideFlags: 0
@@ -162,7 +163,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 69684279}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 711.8369, y: 493.0409, z: -0.41552734}
+  m_LocalPosition: {x: 960, y: 540, z: -0.41552734}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -209,7 +210,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 132008807}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1166.0879, y: 433.49582, z: -226.9432}
+  m_LocalPosition: {x: 960, y: 540, z: -226.9432}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -240,7 +241,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 132409406}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -258,8 +259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d716a4b0acc33d4da02b4177b4e0446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  url: 
-  enemyViewController: {fileID: 132008808}
   getUrl: localhost:3000/enemy
   postUrl: localhost:3000/enemy/create
 --- !u!1 &519420028
@@ -339,7 +338,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 960, y: 540, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -405,7 +404,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1736003614}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
