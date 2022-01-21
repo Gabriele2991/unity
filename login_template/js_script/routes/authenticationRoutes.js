@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
 const Account = mongoose.model('accounts');
 
-const {argon2i} = require('argon2-ffi');
-const crypto = require('crypto');
-
+const bcrypt = require("bcrypt");
 const passwordRegex = new RegExp("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,24})");
 
 module.exports = app => {
@@ -23,7 +21,7 @@ module.exports = app => {
 
         var userAccount = await Account.findOne({ username: rUsername}, 'username adminFlag password');
         if(userAccount != null){
-            argon2i.verify(userAccount.password, rPassword).then(async (success) => {
+            bcrypt.compare(userAccount.password, rPassword, async (success) => {
                 if(success){
                     userAccount.lastAuthentication = Date.now();
                     await userAccount.save();
@@ -64,7 +62,7 @@ module.exports = app => {
             return;
         }
 
-        console.log(passwordRegex);
+        //console.log(passwordRegex);
         console.log(rPassword);
         if(!passwordRegex.test(rPassword))
         {
@@ -80,12 +78,12 @@ module.exports = app => {
             console.log("Create new account...")
 
             // Generate a unique access token
-            crypto.randomBytes(32, function(err, salt) {
+            bcrypt.genSalt(10, function(err, salt) {
                 if(err){
                     console.log(err);
                 }
 
-                argon2i.hash(rPassword, salt).then(async (hash) => {
+                bcrypt.hash(rPassword, salt,async(hash)=>{
                     var newAccount = new Account({
                         username : rUsername,
                         password : hash,
@@ -94,7 +92,8 @@ module.exports = app => {
                         lastAuthentication : Date.now()
                     });
                     await newAccount.save();
-
+                    console.log(newAccount);
+                    
                     response.code = 0;
                     response.msg = "Account found";
                     response.data = ( ({username}) => ({ username }) )(newAccount);
