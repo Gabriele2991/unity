@@ -8,16 +8,32 @@ using System.Text.RegularExpressions;
 public class Login : MonoBehaviour
 {
     private const string PASSWORD_REGEX = "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,24})";
+    private bool activateMe = false;
 
     [SerializeField] private string loginEndpoint = "http://127.0.0.1:13756/account/login";
     [SerializeField] private string createEndpoint = "http://127.0.0.1:13756/account/create";
 
     [SerializeField] private TextMeshProUGUI alertText;
+    [SerializeField] GameObject passwordTip;
+    [SerializeField] private TextMeshProUGUI passTipText;
     [SerializeField] private Button loginButton;
     [SerializeField] private Button createButton;
     [SerializeField] private TMP_InputField usernameInputField;
     [SerializeField] private TMP_InputField passwordInputField;
 
+
+
+    private void Update()
+    {
+        if (activateMe)
+        {
+            passwordTip.SetActive(true);
+        }
+        else
+        {
+            passwordTip.SetActive(false);
+        }
+    }
     public void OnLoginClick()
     {
         alertText.text = "Signing in...";
@@ -30,7 +46,6 @@ public class Login : MonoBehaviour
     {
         alertText.text = "Creating account...";
         ActivateButtons(false);
-
         StartCoroutine(TryCreate());
     }
 
@@ -121,12 +136,16 @@ public class Login : MonoBehaviour
         }
 
         if (!Regex.IsMatch(password, PASSWORD_REGEX))
-        {
-            Debug.Log("sei qui 1");
+        {   
+            activateMe = true;
+
+            passTipText.text = "Password need at least 1 uppercase letter and a number ";
             alertText.text = "Invalid credentials";
+
             ActivateButtons(true);
             yield break;
         }
+ 
 
         WWWForm form = new WWWForm();
         form.AddField("rUsername", username);
@@ -144,7 +163,6 @@ public class Login : MonoBehaviour
             {
                 break;
             }
-
             yield return null;
         }
 
@@ -175,8 +193,6 @@ public class Login : MonoBehaviour
                         break;
 
                 }
-
-                Debug.Log("stronzo sei qui");
             }
         }
         else
